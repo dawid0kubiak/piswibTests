@@ -1,18 +1,11 @@
 package piswib.login;
 
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import piswib.login.pages.LoginActions;
 
 
 public class LoginTest extends LoginActions {
-
-    @BeforeClass
-    public void setUpClass() {
-        browser.get("");
-    }
 
     @Test
     public void bad_login_test() {
@@ -53,8 +46,4 @@ public class LoginTest extends LoginActions {
         Assert.assertEquals(login_label().getText(), "admin");
     }
 
-    @AfterClass
-    public void tearDownClass() {
-        browser.quit();
-    }
 }

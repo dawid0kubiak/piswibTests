@@ -5,17 +5,28 @@ import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeSuite;
 
 import java.util.concurrent.TimeUnit;
 
 public abstract class BaseSeleniumPiswib {
-    protected static WebDriver browser;
 
-    protected BaseSeleniumPiswib() {
-        browser = new FirefoxDriver();
+    protected static final WebDriver browser = new FirefoxDriver();
+
+    @BeforeSuite
+    public void setUpSuite() {
+        browser.get("http://localhost:8080/PISWIB/");
+    }
+
+    @AfterSuite
+    public void tearDownSuite() {
+        browser.quit();
     }
 
     protected static boolean is_element_exist(By by) {
+
         return browser.findElements(by).size() > 0;
     }
 

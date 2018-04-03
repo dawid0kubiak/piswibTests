@@ -11,18 +11,22 @@ public class LoginPage extends BaseSeleniumPiswib {
     }
 
     protected WebElement password() {
+
         return wait_and_find_element(By.id("loginform:password"));
     }
 
     protected WebElement submit() {
+
         return wait_and_find_element(By.id("loginform:submita"));
     }
 
     protected WebElement message_error() {
+
         return wait_and_find_element(By.className("ui-messages-error-summary"));
     }
 
     protected WebElement login_label() {
+
         return wait_and_find_element(By.id("loginLabel"));
     }
 
