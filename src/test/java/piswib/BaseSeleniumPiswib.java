@@ -5,11 +5,7 @@ import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
-
 import static piswib.Repository.*;
-
 import java.util.concurrent.TimeUnit;
 
 public abstract class BaseSeleniumPiswib {
