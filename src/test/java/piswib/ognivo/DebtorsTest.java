@@ -8,8 +8,8 @@ public class DebtorsTest extends DebtorsActions {
 
 
     @Test
-    public void view_page() {
-       Menu.ognivo_dluznicy();
+    public void viewPage() {
+        Menu.ognivoDluznicy();
 
         Assert.assertEquals(templateTitleId().getText(), "Dłużnicy");
     }

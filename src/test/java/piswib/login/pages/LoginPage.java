@@ -7,27 +7,27 @@ import piswib.BaseSeleniumPiswib;
 public class LoginPage extends BaseSeleniumPiswib {
 
     protected WebElement login() {
-        return wait_and_find_element(By.id("loginform:login"));
+        return waitAndFindElement(By.id("loginform:login"));
     }
 
     protected WebElement password() {
 
-        return wait_and_find_element(By.id("loginform:password"));
+        return waitAndFindElement(By.id("loginform:password"));
     }
 
     protected WebElement submit() {
 
-        return wait_and_find_element(By.id("loginform:submita"));
+        return waitAndFindElement(By.id("loginform:submita"));
     }
 
-    protected WebElement message_error() {
+    protected WebElement messageError() {
 
-        return wait_and_find_element(By.className("ui-messages-error-summary"));
+        return waitAndFindElement(By.className("ui-messages-error-summary"));
     }
 
-    protected WebElement login_label() {
+    protected WebElement loginLabel() {
 
-        return wait_and_find_element(By.id("loginLabel"));
+        return waitAndFindElement(By.id("loginLabel"));
     }
 
 }

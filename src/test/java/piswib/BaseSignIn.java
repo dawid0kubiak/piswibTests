@@ -8,7 +8,7 @@ public abstract class BaseSignIn extends BaseSeleniumPiswib {
     public void setUpTest() {
 
         browser.get(Repository.PISWIB_URL);
-        sign_in();
+        signIn();
     }
 
     @AfterTest

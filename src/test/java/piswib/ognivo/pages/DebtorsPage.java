@@ -7,6 +7,7 @@ import piswib.BaseSignIn;
 public class DebtorsPage extends BaseSignIn {
 
     protected WebElement templateTitleId() {
-        return wait_and_find_element(By.id("contentForm:templateTitleId"));
+
+        return waitAndFindElement(By.id("contentForm:templateTitleId"));
     }
 }
