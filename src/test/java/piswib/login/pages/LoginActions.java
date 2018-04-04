@@ -1,35 +1,26 @@
 package piswib.login.pages;
 
-public class LoginActions extends LoginPage {
-    private String good_login;
-    private String bad_login;
-    private String good_password;
-    private String bad_password;
+import static piswib.Repository.*;
 
-    public LoginActions() {
-        this.good_login = "admin";
-        this.good_password ="admin";
-        this.bad_login = "zlylogin";
-        this.bad_password = "zlehaslo";
-    }
+public class LoginActions extends LoginPage {
 
     protected void send_correct_login() {
         login().clear();
-        login().sendKeys(good_login);
+        login().sendKeys(GOOD_LOGIN);
     }
 
     protected void send_incorrect_login() {
         login().clear();
-        login().sendKeys(bad_login);
+        login().sendKeys(BAD_LOGIN);
     }
 
     protected void send_correct_password() {
         password().clear();
-        password().sendKeys(good_password);
+        password().sendKeys(GOOD_PASSWORD);
     }
 
     protected void send_incorrect_password() {
         password().clear();
-        password().sendKeys(bad_password);
+        password().sendKeys(BAD_PASSWORD);
     }
 }

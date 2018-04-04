@@ -6,8 +6,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterSuite;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeSuite;
+
+import static piswib.Repository.*;
 
 import java.util.concurrent.TimeUnit;
 
@@ -15,14 +16,18 @@ public abstract class BaseSeleniumPiswib {
 
     protected static final WebDriver browser = new FirefoxDriver();
 
-    @BeforeSuite
-    public void setUpSuite() {
-        browser.get("http://localhost:8080/PISWIB/");
+    protected static void sign_in() {
+        wait_and_find_element(By.id("loginform:login")).sendKeys(GOOD_LOGIN);
+        wait_and_find_element(By.id("loginform:password")).sendKeys(GOOD_PASSWORD);
+        wait_and_find_element(By.id("loginform:submita")).click();
+        wait_and_find_element(By.id("loginLabel"));
+
     }
 
-    @AfterSuite
-    public void tearDownSuite() {
-        browser.quit();
+    protected static void sign_out() {
+        wait_and_find_element(By.id("authTopForm:logoutButton")).click();
+        wait_and_find_element(By.id("loginform:login"));
+
     }
 
     protected static boolean is_element_exist(By by) {
@@ -45,7 +50,26 @@ public abstract class BaseSeleniumPiswib {
             }
             timeout--;
         }
-        throw new ElementNotVisibleException("Element not exist");
+        throw new ElementNotVisibleException("Element not exist: " + by.toString());
+    }
+
+    protected static boolean wait_for_page(String search_name_page) {
+        int timeout = 30;
+
+        while (timeout != 0) {
+            String name_page = wait_and_find_element(By.id("contentForm:templateTitleId")).getText();
+            if (search_name_page.contains(name_page)) {
+                return true;
+            } else {
+                try {
+                    TimeUnit.SECONDS.sleep(1);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            timeout--;
+        }
+        throw new ElementNotVisibleException("Element not exist: " + search_name_page);
     }
 
     protected static class Menu {
@@ -54,10 +78,13 @@ public abstract class BaseSeleniumPiswib {
         public static void ognivo_dluznicy() {
             wait_and_find_element(By.id("menu-group-applicationmenuognivo")).click();
             wait_and_find_element(By.linkText("Dłużnicy")).click();
+            wait_for_page("Dłużnicy");
         }
 
         public static void ognivo_centralna_informacja() {
-            System.out.println("login dłużnicy");
+            wait_and_find_element(By.id("menu-group-applicationmenuognivo")).click();
+            wait_and_find_element(By.linkText("Centralna informacja")).click();
+            wait_for_page("Centralna informacja");
         }
 
         public static void ognivo_ezajecia() {

@@ -1,49 +1,48 @@
 package piswib.login;
 
 import org.testng.Assert;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import piswib.login.pages.LoginActions;
+import static piswib.Repository.*;
 
 
 public class LoginTest extends LoginActions {
 
+
+    @BeforeClass
+    public void setUpTest() {
+
+        browser.get(PISWIB_URL);
+    }
+
+
     @Test
     public void bad_login_test() {
-        // given
         send_incorrect_login();
         send_correct_password();
-
-        // when
         submit().click();
-
-        // then
-        Assert.assertEquals(message_error().getText(), "Zły login lub hasło.");
+        Assert.assertEquals(message_error().getText(), MESSAGE_ERROR_LOGIN);
     }
 
     @Test
     public void bad_password_test() {
-        // given
         send_correct_login();
         send_incorrect_password();
-
-        // when
         submit().click();
-
-        // then
-        Assert.assertEquals(message_error().getText(), "Zły login lub hasło.");
+        Assert.assertEquals(message_error().getText(), MESSAGE_ERROR_LOGIN);
     }
 
     @Test
     public void good_login_test() {
-        // given
         send_correct_login();
         send_correct_password();
-
-        // when
         submit().click();
+        Assert.assertEquals(login_label().getText(), GOOD_LOGIN);
+    }
 
-        // then
-        Assert.assertEquals(login_label().getText(), "admin");
+    @AfterClass
+    public void tearDownTest() {
+        browser.quit();
     }
 
 }
