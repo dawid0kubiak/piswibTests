@@ -1,4 +1,4 @@
-package piswib.ognivo.pages;
+package piswib.ognivo.debtors;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;

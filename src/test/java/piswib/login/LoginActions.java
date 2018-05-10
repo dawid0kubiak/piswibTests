@@ -1,8 +1,8 @@
-package piswib.login.pages;
+package piswib.login;
 
 import static piswib.Repository.*;
 
-public class LoginActions extends LoginPage {
+public abstract class LoginActions extends LoginPage {
 
     protected void sendCorrectLogin() {
         login().clear();

@@ -1,10 +1,10 @@
-package piswib.login.pages;
+package piswib.login;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import piswib.BaseSeleniumPiswib;
 
-public class LoginPage extends BaseSeleniumPiswib {
+public abstract class LoginPage extends BaseSeleniumPiswib {
 
     protected WebElement login() {
         return waitAndFindElement(By.id("loginform:login"));

@@ -2,7 +2,6 @@ package piswib.login;
 
 import org.testng.Assert;
 import org.testng.annotations.*;
-import piswib.login.pages.LoginActions;
 import static piswib.Repository.*;
 
 
@@ -16,7 +15,7 @@ public class LoginTest extends LoginActions {
     }
 
 
-    @Test
+    @Test(priority=1)
     public void badLoginTest() {
         sendIncorrectLogin();
         sendCorrectPassword();
@@ -24,7 +23,7 @@ public class LoginTest extends LoginActions {
         Assert.assertEquals(messageError().getText(), MESSAGE_ERROR_LOGIN);
     }
 
-    @Test
+    @Test(priority=2)
     public void badPasswordTest() {
         sendCorrectLogin();
         sendIncorrectPassword();
@@ -32,7 +31,7 @@ public class LoginTest extends LoginActions {
         Assert.assertEquals(messageError().getText(), MESSAGE_ERROR_LOGIN);
     }
 
-    @Test
+    @Test(priority=3)
     public void goodLoginTest() {
         sendCorrectLogin();
         sendCorrectPassword();
