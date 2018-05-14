@@ -20,8 +20,7 @@ public class LoginPage extends BaseSeleniumPiswib {
     @FindBy(className = "ui-messages-error-summary")
     private static WebElement messageError;
 
-    @FindBy(id = "loginLabel")
-    private static WebElement loginLabel;
+
 
 
     //    Actions
@@ -50,9 +49,7 @@ public class LoginPage extends BaseSeleniumPiswib {
         return messageError.getText();
     }
 
-    public String loginLabelText() {
-        return loginLabel.getText();
-    }
+
 
 
     public void submit() {

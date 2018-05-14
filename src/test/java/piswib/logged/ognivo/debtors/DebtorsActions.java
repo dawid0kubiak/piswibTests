@@ -1,4 +1,4 @@
-package piswib.ognivo.debtors;
+package piswib.logged.ognivo.debtors;
 
 public class DebtorsActions extends DebtorsPage {
 }

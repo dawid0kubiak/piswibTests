@@ -1,7 +1,7 @@
-package piswib.ognivo;
+package piswib.logged.ognivo;
 
 import org.testng.annotations.Test;
-import piswib.ognivo.debtors.DebtorsActions;
+import piswib.logged.ognivo.debtors.DebtorsActions;
 
 public class DebtorsTest extends DebtorsActions {
 

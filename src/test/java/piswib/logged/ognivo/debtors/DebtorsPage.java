@@ -1,4 +1,4 @@
-package piswib.ognivo.debtors;
+package piswib.logged.ognivo.debtors;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

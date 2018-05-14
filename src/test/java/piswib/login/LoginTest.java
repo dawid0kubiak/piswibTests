@@ -9,10 +9,12 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import piswib.BaseSeleniumPiswib;
+import piswib.logged.HomePage;
 
 public class LoginTest extends BaseSeleniumPiswib {
 
     LoginPage login_page =PageFactory.initElements(browser, LoginPage.class);
+    HomePage home_page =PageFactory.initElements(browser, HomePage.class);
 
     @BeforeClass
     public void setUpTest() {
@@ -40,7 +42,7 @@ public class LoginTest extends BaseSeleniumPiswib {
         login_page.sendCorrectLogin();
         login_page.sendCorrectPassword();
         login_page.submit();
-        assertThat(login_page.loginLabelText()).isEqualTo(GOOD_LOGIN);
+        assertThat(home_page.loginLabelText()).isEqualTo(GOOD_LOGIN);
     }
 
     @AfterClass
