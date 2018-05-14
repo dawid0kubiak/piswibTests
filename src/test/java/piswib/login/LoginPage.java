@@ -1,33 +1,61 @@
 package piswib.login;
 
-import org.openqa.selenium.By;
+
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import piswib.BaseSeleniumPiswib;
 
-public abstract class LoginPage extends BaseSeleniumPiswib {
+import static piswib.Repository.*;
 
-    protected WebElement login() {
-        return waitAndFindElement(By.id("loginform:login"));
+public class LoginPage extends BaseSeleniumPiswib {
+    @FindBy(id = "loginform:login")
+    private static WebElement login;
+
+    @FindBy(id = "loginform:password")
+    private static WebElement password;
+
+    @FindBy(id = "loginform:submita")
+    private static WebElement submit;
+
+    @FindBy(className = "ui-messages-error-summary")
+    private static WebElement messageError;
+
+    @FindBy(id = "loginLabel")
+    private static WebElement loginLabel;
+
+
+    //    Actions
+
+    public void sendCorrectLogin() {
+        login.clear();
+        login.sendKeys(GOOD_LOGIN);
     }
 
-    protected WebElement password() {
-
-        return waitAndFindElement(By.id("loginform:password"));
+    public void sendCorrectPassword() {
+        password.clear();
+        password.sendKeys(GOOD_PASSWORD);
     }
 
-    protected WebElement submit() {
-
-        return waitAndFindElement(By.id("loginform:submita"));
+    public void sendIncorrectLogin() {
+        login.clear();
+        login.sendKeys(BAD_LOGIN);
     }
 
-    protected WebElement messageError() {
-
-        return waitAndFindElement(By.className("ui-messages-error-summary"));
+    public void sendIncorrectPassword() {
+        password.clear();
+        password.sendKeys(BAD_PASSWORD);
     }
 
-    protected WebElement loginLabel() {
-
-        return waitAndFindElement(By.id("loginLabel"));
+    public String messageErrorText() {
+        return messageError.getText();
     }
 
+    public String loginLabelText() {
+        return loginLabel.getText();
+    }
+
+
+    public void submit() {
+        submit.click();
+    }
 }

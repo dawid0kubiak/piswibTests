@@ -1,47 +1,51 @@
 package piswib.login;
 
-import org.testng.Assert;
-import org.testng.annotations.*;
+import static org.assertj.core.api.Assertions.*;
+
 import static piswib.Repository.*;
 
+import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+import piswib.BaseSeleniumPiswib;
 
-public class LoginTest extends LoginActions {
+public class LoginTest extends BaseSeleniumPiswib {
 
+    LoginPage login_page =PageFactory.initElements(browser, LoginPage.class);
 
     @BeforeClass
     public void setUpTest() {
-
-        browser.get(PISWIB_URL);
     }
 
 
-    @Test(priority=1)
+    @Test
     public void badLoginTest() {
-        sendIncorrectLogin();
-        sendCorrectPassword();
-        submit().click();
-        Assert.assertEquals(messageError().getText(), MESSAGE_ERROR_LOGIN);
+        login_page.sendIncorrectLogin();
+        login_page.sendCorrectPassword();
+        login_page.submit();
+        assertThat(login_page.messageErrorText()).isEqualTo(MESSAGE_ERROR_LOGIN);
     }
 
-    @Test(priority=2)
+    @Test
     public void badPasswordTest() {
-        sendCorrectLogin();
-        sendIncorrectPassword();
-        submit().click();
-        Assert.assertEquals(messageError().getText(), MESSAGE_ERROR_LOGIN);
+        login_page.sendCorrectLogin();
+        login_page.sendIncorrectPassword();
+        login_page.submit();
+        assertThat(login_page.messageErrorText()).isEqualTo(MESSAGE_ERROR_LOGIN);
     }
 
-    @Test(priority=3)
+    @Test
     public void goodLoginTest() {
-        sendCorrectLogin();
-        sendCorrectPassword();
-        submit().click();
-        Assert.assertEquals(loginLabel().getText(), GOOD_LOGIN);
+        login_page.sendCorrectLogin();
+        login_page.sendCorrectPassword();
+        login_page.submit();
+        assertThat(login_page.loginLabelText()).isEqualTo(GOOD_LOGIN);
     }
 
     @AfterClass
-    public void tearDownTest() {
-        browser.quit();
+    public void tearDownClass() {
+        browser.manage().deleteAllCookies();
     }
 
 }

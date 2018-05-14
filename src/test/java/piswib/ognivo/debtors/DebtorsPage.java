@@ -1,13 +1,13 @@
 package piswib.ognivo.debtors;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import piswib.BaseSignIn;
+import org.openqa.selenium.support.FindBy;
+import piswib.BaseSeleniumPiswib;
 
-public class DebtorsPage extends BaseSignIn {
+public class DebtorsPage extends BaseSeleniumPiswib {
 
-    protected WebElement templateTitleId() {
+        @FindBy(id = "contentForm:templateTitleId")
+    private static WebElement templateTitleId;
 
-        return waitAndFindElement(By.id("contentForm:templateTitleId"));
-    }
+
 }
