@@ -1,4 +1,4 @@
-package piswib.login;
+package piswib.pages.login;
 
 
 import org.openqa.selenium.WebElement;
@@ -19,8 +19,6 @@ public class LoginPage extends BaseSeleniumPiswib {
 
     @FindBy(className = "ui-messages-error-summary")
     private static WebElement messageError;
-
-
 
 
     //    Actions

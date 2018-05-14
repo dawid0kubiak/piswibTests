@@ -1,4 +1,4 @@
-package piswib.login;
+package piswib.tests;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -9,17 +9,18 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import piswib.BaseSeleniumPiswib;
-import piswib.logged.HomePage;
+import piswib.pages.logged.HomePage;
+import piswib.pages.login.LoginPage;
 
 public class LoginTest extends BaseSeleniumPiswib {
 
-    LoginPage login_page =PageFactory.initElements(browser, LoginPage.class);
-    HomePage home_page =PageFactory.initElements(browser, HomePage.class);
+    LoginPage login_page = PageFactory.initElements(browser, LoginPage.class);
+    HomePage home_page = PageFactory.initElements(browser, HomePage.class);
 
     @BeforeClass
     public void setUpTest() {
+        browser.manage().deleteAllCookies();
     }
-
 
     @Test
     public void badLoginTest() {
