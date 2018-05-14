@@ -2,7 +2,7 @@ package piswib;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
-import piswib.pages.login.logged.HomePage;
+import piswib.pages.logged.HomePage;
 import piswib.pages.login.LoginPage;
 
 import static piswib.Repository.GOOD_LOGIN;
