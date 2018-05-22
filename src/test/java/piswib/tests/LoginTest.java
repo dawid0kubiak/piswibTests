@@ -19,7 +19,7 @@ public class LoginTest extends BaseSeleniumPiswib {
 
     @BeforeClass
     public void setUpTest() {
-        browser.manage().deleteAllCookies();
+
     }
 
     @Test

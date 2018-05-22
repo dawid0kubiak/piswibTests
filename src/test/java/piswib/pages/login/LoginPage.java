@@ -44,13 +44,12 @@ public class LoginPage extends BaseSeleniumPiswib {
     }
 
     public String messageErrorText() {
+
         return messageError.getText();
     }
 
-
-
-
     public void submit() {
+
         submit.click();
     }
 }

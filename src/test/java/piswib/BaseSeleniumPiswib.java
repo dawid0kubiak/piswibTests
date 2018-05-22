@@ -17,6 +17,7 @@ public abstract class BaseSeleniumPiswib {
 
     @AfterSuite
     public void tearDownSuite(){
+
         browser.quit();
     }
 
