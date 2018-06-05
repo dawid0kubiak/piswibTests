@@ -2,23 +2,31 @@ package piswib.pages.login;
 
 
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
-import piswib.BaseSeleniumPiswib;
+
+import java.util.List;
 
 import static piswib.Repository.*;
 
-public class LoginPage extends BaseSeleniumPiswib {
+public class LoginPage extends piswib.BasePage {
     @FindBy(id = "loginform:login")
-    private static WebElement login;
+    private WebElement login;
 
     @FindBy(id = "loginform:password")
-    private static WebElement password;
+    private WebElement password;
 
     @FindBy(id = "loginform:submita")
-    private static WebElement submit;
+    private WebElement submit;
 
     @FindBy(className = "ui-messages-error-summary")
-    private static WebElement messageError;
+    private WebElement messageError;
+
+    @FindBy(className = "ui-messages-warn-summary")
+    private WebElement loginMessage;
+
+    @FindAll({@FindBy(id = "loginform")})
+    private List<WebElement> loginForm;
 
 
     //    Actions
@@ -43,13 +51,31 @@ public class LoginPage extends BaseSeleniumPiswib {
         password.sendKeys(BAD_PASSWORD);
     }
 
-    public String messageErrorText() {
+    public void clearLogin(){
+        login.clear();
+    }
 
-        return messageError.getText();
+    public void clearPassword(){
+        password.clear();
     }
 
     public void submit() {
-
         submit.click();
+    }
+
+    public void checkMessageErrorLogin(String testlink_external_id){
+        assertThatIsEqualTo(messageError.getText(), MESSAGE_ERROR_LOGIN, testlink_external_id);
+    }
+
+    public void checkMessageLogin(String testlink_external_id){
+        assertThatIsEqualTo(loginMessage.getText(), MESSAGE_LOGIN, testlink_external_id);
+    }
+
+    public void checkMessagePassword(String testlink_external_id){
+        assertThatIsEqualTo(loginMessage.getText(), MESSAGE_PASSWORD, testlink_external_id);
+    }
+
+    public void checkLoginPage(String testlink_external_id){
+        assertThatIsEqualTo(super.isExist(loginForm.size()), ELEMENT_EXIST, testlink_external_id);
     }
 }
